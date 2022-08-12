@@ -1,5 +1,5 @@
 package com.games.blackjack;
 
 enum Card {
-    ACE_SPAE
+    ACE_SPADES, TWO_SPADES, THREE_SPADES
 }
