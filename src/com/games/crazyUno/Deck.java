@@ -1,4 +1,4 @@
-package com.games.blackjack;
+package com.games.crazyUno;
 
 import java.util.Set;
 
