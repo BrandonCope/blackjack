@@ -3,10 +3,7 @@ package com.games.crazyUno;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -16,6 +13,7 @@ public class DeckTest {
 
     @Before
     public void setUp() throws Exception {
+        Deck newDeck = new Deck();
 
     }
 
@@ -35,12 +33,24 @@ public class DeckTest {
                 expected.put(cardCount, newCard);
             }
         }
+
         assertEquals(expected, result.buildDeck());
     }
 
-//    @Test
-//    public void drawCard() {
-//    }
+    @Test
+    public void drawCard_returnOneCard_whenMethodCalled() {
+        Deck newDeck = new Deck();
+        Map<Card, Card.CardValue> newCard = new TreeMap<>();
+        newDeck.buildDeck();
+        List<Map<Card, Card.CardValue>> keys = new ArrayList(newDeck.getDeckMap().keySet());
+        Collections.shuffle(keys);
+        newCard =  newDeck.getDeckMap().get(keys.get(0));
+        assertTrue(newDeck.getDeckMap().containsValue(newCard));
+
+        newDeck.getDeckMap().remove(keys.get(0));
+
+        assertFalse(newDeck.getDeckMap().containsValue(newCard));
+    }
 //
 //    @Test
 //    public void getDeckMap() {
@@ -48,5 +58,11 @@ public class DeckTest {
 //
 //    @Test
 //    public void reset() {
+//        Deck newDeck = new Deck();
+//        newDeck.buildDeck();
+//        newDeck.drawCard();
+//        Map<Integer, Map<Card, Card.CardValue>> oldDeck = (Map<Integer, Map<Card, Card.CardValue>>) newDeck;
+//        newDeck.reset();
+//
 //    }
 }
