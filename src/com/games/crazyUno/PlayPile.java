@@ -18,7 +18,7 @@ class PlayPile extends Deck {
      * add one card to pile from class Deck
      */
     public void createPile() {
-        pileMap = Deck.drawCard();
+//        pileMap = Deck.drawCard();
     }
 
     public Map<Integer, Card> getPileMap() {
