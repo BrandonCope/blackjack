@@ -36,20 +36,27 @@ class Deck {
 
                 deckMap.put(cardCount, newCard);
             }
+
         }
         return deckMap;
     }
     /*
      * gets top card from deckMap, and returns card
      */
-    public static Map<Integer, Map<Card, Card.CardValue>> drawCard() {
-        Map<Integer, Map<Card, Card.CardValue>> result = deckMap;
+    public static Map<Card, Card.CardValue> drawCard() {
+        Map<Card, Card.CardValue> newCard = new TreeMap<>();
 
-        return result;
+        List<Map<Card, Card.CardValue>> keys = new ArrayList(getDeckMap().keySet());
+        Collections.shuffle(keys);
+        newCard =  getDeckMap().get(keys.get(0));
+        getDeckMap().remove(keys.get(0));
+
+        return newCard;
     }
 
 
-    public Map<Integer, Map<Card, Card.CardValue>> getDeckMap() {
+    public static Map<Integer, Map<Card, Card.CardValue>> getDeckMap() {
+
         return deckMap;
     }
 
