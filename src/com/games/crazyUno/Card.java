@@ -2,7 +2,7 @@ package com.games.crazyUno;
 
 public enum Card {
         RED, BLUE, YELLOW, GREEN;
-    enum CardValue{
+    public enum CardValue{
         ZERO("0"),
         ONE("1"),
         TWO("2"),
