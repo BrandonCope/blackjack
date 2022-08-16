@@ -11,11 +11,7 @@ public class DeckTest {
 
 
 
-    @Before
-    public void setUp() throws Exception {
-        Deck newDeck = new Deck();
 
-    }
 
     @Test
     public void buildDeck_returnTreeMapOfCards_whenCardsMatchingSuccess() {
@@ -38,6 +34,18 @@ public class DeckTest {
     }
 
     @Test
+    public void buildDeck_returnsNewDeck_whenCalledAfterDeckHasBeenAltered() {
+        Deck newDeck = new Deck();
+        newDeck.buildDeck();
+        Map<Card, Card.CardValue> newCard = newDeck.drawCard();
+
+        assertFalse(newDeck.getDeckMap().containsValue(newCard));
+        newDeck.buildDeck();
+        assertTrue(newDeck.getDeckMap().containsValue(newCard));
+
+    }
+
+    @Test
     public void drawCard_returnOneCard_whenMethodCalled() {
         Deck newDeck = new Deck();
         Map<Card, Card.CardValue> newCard = new TreeMap<>();
@@ -51,18 +59,17 @@ public class DeckTest {
 
         assertFalse(newDeck.getDeckMap().containsValue(newCard));
     }
-//
-//    @Test
-//    public void getDeckMap() {
-//    }
-//
-//    @Test
-//    public void reset() {
-//        Deck newDeck = new Deck();
-//        newDeck.buildDeck();
-//        newDeck.drawCard();
-//        Map<Integer, Map<Card, Card.CardValue>> oldDeck = (Map<Integer, Map<Card, Card.CardValue>>) newDeck;
-//        newDeck.reset();
-//
-//    }
+
+    @Test
+    public void getDeckMap_shouldReturnEmpty_whenDeckHasNotBeenBuilt() {
+        Deck newDeck = new Deck();
+        assertEquals(new TreeMap<>() , newDeck.getDeckMap());
+    }
+
+    @Test
+    public void getDeckMap_shouldReturnFullDeck_whenDeckHasBeenBuilt() {
+        Deck newDeck = new Deck();
+        assertEquals(newDeck.buildDeck(), newDeck.getDeckMap());
+    }
+
 }

@@ -4,7 +4,7 @@ import java.util.*;
 
 class Deck {
     // Fields
-    private static Map<Integer, Map<Card, Card.CardValue>> deckMap = new TreeMap<>();
+    private Map<Integer, Map<Card, Card.CardValue>> deckMap = new TreeMap<>();
 
     private Card cards;
 
@@ -43,7 +43,7 @@ class Deck {
     /*
      * gets top card from deckMap, and returns card
      */
-    public static Map<Card, Card.CardValue> drawCard() {
+    public Map<Card, Card.CardValue> drawCard() {
         Map<Card, Card.CardValue> newCard = new TreeMap<>();
 
         List<Map<Card, Card.CardValue>> keys = new ArrayList(getDeckMap().keySet());
@@ -55,16 +55,11 @@ class Deck {
     }
 
 
-    public static Map<Integer, Map<Card, Card.CardValue>> getDeckMap() {
+    public Map<Integer, Map<Card, Card.CardValue>> getDeckMap() {
 
         return deckMap;
     }
 
-    // resets deck
-    public void reset() {
-        deckMap = new TreeMap<Integer, Map<Card, Card.CardValue>>();
-        buildDeck();
-    }
 
     @Override
     public String toString() {

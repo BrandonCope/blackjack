@@ -1,16 +1,17 @@
 package com.games.crazyUno;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 class PlayPile extends Deck {
     // Fields
-    public Map<Integer, Card> pileMap = new TreeMap<>();
+    public List<Map<Card, Card.CardValue>> pileList = new ArrayList<>();
 
     // Constructor
     public PlayPile() {
         super();
-        createPile();
     }
 
     // Methods
@@ -18,16 +19,23 @@ class PlayPile extends Deck {
      * add one card to pile from class Deck
      */
     public void createPile() {
-//        pileMap = Deck.drawCard();
+        Map<Card, Card.CardValue> newCard = drawCard();
+        this.getPile().add(newCard);
     }
 
-    public Map<Integer, Card> getPileMap() {
-        return pileMap;
+    public List<Map<Card, Card.CardValue>> getPile() {
+        return this.pileList;
+    }
+
+    public void setPileList(List<Map<Card, Card.CardValue>> pileList) {
+        this.pileList = pileList;
     }
 
     // resets playPile
     public void reset() {
-        pileMap = new TreeMap<>();
-        createPile();
+        buildDeck();
+        this.setPileList(new ArrayList<>());
     }
+
+
 }
