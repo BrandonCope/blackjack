@@ -35,7 +35,6 @@ class PlayPile extends Deck {
     public void reset() {
         buildDeck();
         this.setPileList(new ArrayList<>());
+        createPile();
     }
-
-
 }

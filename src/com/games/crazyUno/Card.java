@@ -14,7 +14,6 @@ public enum Card {
         EIGHT("8"),
         NINE("9"),;
 
-
         private final String cardValue;
 
         CardValue(String cardValue) {
@@ -27,7 +26,5 @@ public enum Card {
         public String toString(){
             return cardValue();
         }
-
     }
-
 }
