@@ -9,10 +9,6 @@ import static org.junit.Assert.*;
 
 public class DeckTest {
 
-
-
-
-
     @Test
     public void buildDeck_returnTreeMapOfCards_whenCardsMatchingSuccess() {
         Map<Integer, Map<Card, Card.CardValue>> expected = new TreeMap<>();
@@ -71,5 +67,4 @@ public class DeckTest {
         Deck newDeck = new Deck();
         assertEquals(newDeck.buildDeck(), newDeck.getDeckMap());
     }
-
 }

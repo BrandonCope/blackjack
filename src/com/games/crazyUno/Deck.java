@@ -11,13 +11,6 @@ class Deck {
     // Constructor
     public Deck() {
     }
-
-    public Deck(Map<Integer, Map<Card, Card.CardValue>> deckMap) {
-        this.deckMap = deckMap;
-    }
-
-
-
     //Methods
     /*
      method creates deck by using all possible
@@ -35,18 +28,20 @@ class Deck {
                 cardCount += 1;
 
                 deckMap.put(cardCount, newCard);
+
             }
 
         }
+
         return deckMap;
     }
     /*
      * gets top card from deckMap, and returns card
      */
     public Map<Card, Card.CardValue> drawCard() {
-        Map<Card, Card.CardValue> newCard = new TreeMap<>();
+        Map<Card, Card.CardValue> newCard;
 
-        List<Map<Card, Card.CardValue>> keys = new ArrayList(getDeckMap().keySet());
+       List<Map<Card, Card.CardValue>> keys = new ArrayList(getDeckMap().keySet());
         Collections.shuffle(keys);
         newCard =  getDeckMap().get(keys.get(0));
         getDeckMap().remove(keys.get(0));
@@ -54,12 +49,10 @@ class Deck {
         return newCard;
     }
 
-
     public Map<Integer, Map<Card, Card.CardValue>> getDeckMap() {
 
         return deckMap;
     }
-
 
     @Override
     public String toString() {

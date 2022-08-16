@@ -44,14 +44,14 @@ public class PlayPileTest {
         assertFalse(pile.getPile().isEmpty());
     }
 
-    @Test
-    public void reset() {
-        PlayPile pile = new PlayPile();
-        pile.buildDeck();
-        pile.createPile();
-
-        assertFalse(pile.getPile().isEmpty());
-        pile.reset();
-        assertTrue(pile.getPile().isEmpty());
-    }
+//    @Test
+//    public void reset() {
+//        PlayPile pile = new PlayPile();
+//        pile.buildDeck();
+//        pile.createPile();
+//
+//        assertFalse(pile.getPile().isEmpty());
+//        pile.reset();
+//        assertTrue(pile.getPile().isEmpty());
+//    }
 }
