@@ -14,23 +14,23 @@ public class PlayerTest {
     public void setUp() throws Exception {
     }
 
-    @Test
-    public void startGame() {
-        Player player1 = new Player("NAME", new PlayPile());
+//    @Test
+//    public void startGame() {
+//        Player player1 = new Player("NAME", new PlayPile());
+//
+//        player1.startGame();
+//        assertEquals(7,player1.getPlayerHand().size());
+//        assertFalse(player1.getPile().pileList.isEmpty());
+//        assertFalse(player1.getPile().getDeckMap().isEmpty());
+//    }
 
-        player1.startGame();
-        assertEquals(7,player1.getPlayerHand().size());
-        assertFalse(player1.getPile().pileList.isEmpty());
-        assertFalse(player1.getPile().getDeckMap().isEmpty());
-    }
-
-    @Test
-    public void playCard() {
-        Player player1 = new Player("NAME", new PlayPile());
-
-        player1.startGame();
-
-    }
+//    @Test
+//    public void playCard() {
+//        Player player1 = new Player("NAME", new PlayPile());
+//
+//        player1.startGame();
+//
+//    }
 
     @Test
     public void reset() {

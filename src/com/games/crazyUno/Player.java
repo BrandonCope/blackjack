@@ -10,9 +10,9 @@ public class Player {
     private String playerName;
     private PlayPile pile;
     private List<Map<Card, Card.CardValue>> playerHand = new ArrayList<>();
-
+    private static Boolean hasCards;
     //Constructor
-    public Player(String playerName, PlayPile pile) {
+    public Player(String playerName, List<Map<Card, Card.CardValue>> playerHand) {
         this.pile= pile;
         setPlayerName(playerName);
 
@@ -63,5 +63,13 @@ public class Player {
 
     public void setPile(PlayPile pile) {
         this.pile = pile;
+    }
+
+    public static Boolean getHasCards() {
+        return hasCards;
+    }
+
+    public void setHasCards(Boolean hasCards) {
+        this.hasCards = hasCards;
     }
 }

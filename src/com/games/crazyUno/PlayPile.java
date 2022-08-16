@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-class PlayPile extends Deck {
+public class PlayPile extends Deck {
     // Fields
     public List<Map<Card, Card.CardValue>> pileList = new ArrayList<>();
 
