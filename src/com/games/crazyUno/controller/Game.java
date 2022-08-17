@@ -29,6 +29,7 @@ public class Game {
 
     public void execute() throws IOException {
         welcome();
+//        color();
         players = promptForPlayers();
         names = promptForName();
         playerHands = buildHand();
@@ -38,6 +39,15 @@ public class Game {
 
 
     }
+    
+    // Logic for printing players hand with color
+//  for (Map<Card, Card.CardValue> card : playerHand) {
+//            Set<Card> colors = card.keySet();
+//            for (Card color : colors) {
+//                System.out.printf("\033[%sm%s\033[0m", color ,card.values());
+//            }
+//        }
+
 
     private void welcome() throws IOException {
 
@@ -46,6 +56,7 @@ public class Game {
         System.out.println();
 
     }
+
 
     private int promptForPlayers() {
         int players = 0;

@@ -20,19 +20,20 @@ class Deck {
     public Map<Integer, Map<Card, Card.CardValue>> buildDeck(){
 
         int cardCount = 0;
-        for (Card card : Card.values()) {
-            for (Card.CardValue value : Card.CardValue.values()) {
-                Map<Card, Card.CardValue> newCard = new HashMap<>();
-                newCard.put(card, value);
+        for (int i = 0; i < 2; i++) {
+            for (Card card : Card.values()) {
+                for (Card.CardValue value : Card.CardValue.values()) {
+                    Map<Card, Card.CardValue> newCard = new HashMap<>();
+                    newCard.put(card, value);
 
-                cardCount += 1;
+                    cardCount += 1;
 
-                deckMap.put(cardCount, newCard);
+                    deckMap.put(cardCount, newCard);
+
+                }
 
             }
-
         }
-
         return deckMap;
     }
     /*
