@@ -3,10 +3,7 @@ package com.games.crazyUno;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -42,13 +39,9 @@ public class PlayPileTest {
     }
 
 //    @Test
-//    public void reset() {
+//    public void cardIsValid() {
+//        Map<Card, Card.CardValue> card = new HashMap<Card, Card.CardValue>(Card.BLUE, Card.CardValue.EIGHT);
 //        PlayPile pile = new PlayPile();
-//        pile.buildDeck();
-//        pile.createPile();
-//
-//        assertFalse(pile.getPile().isEmpty());
-//        pile.reset();
-//        assertTrue(pile.getPile().isEmpty());
+////        pile.cardIsValid();
 //    }
 }

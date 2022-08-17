@@ -3,6 +3,7 @@ package com.games.crazyUno;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Player {
 
@@ -13,53 +14,33 @@ public class Player {
     private static Boolean hasCards = true;
     //Constructor
     public Player(String playerName, List<Map<Card, Card.CardValue>> playerHand) {
-        this.pile= pile;
-        setPlayerName(playerName);
-
+        this.playerName = playerName;
+        this.playerHand = playerHand;
     }
 
     //Business Methods
-    public void playCard (Map<Card, Card.CardValue> card) {
-
-
-    }
-
-    public boolean cardIsValid(int cardSelected) {
-        // check if players selected card matches playPile
-        return false;
-    }
-
-    public void showHand() {
+    public void showHand(Player player) {
+        System.out.printf("%s's Hand: ", player.getPlayerName());
+        for (Map<Card, Card.CardValue> card : playerHand) {
+            Set<Card> colors = card.keySet();
+            for (Card color : colors) {
+                System.out.printf("\033[%sm%s\033[0m", color, card.values());
+            }
+        }
 
     }
 
-//    public void reset () {
-//        pile.buildDeck();
-//        this.setPlayerHand(new ArrayList<>());
-//
-//    }
-        //Accessor Methods
+    //Accessor Methods
     public String getPlayerName () {
         return playerName;
-    }
-
-    public void setPlayerName (String playerName){
-        this.playerName = playerName;
     }
 
     public List<Map<Card, Card.CardValue>> getPlayerHand () {
         return playerHand;
     }
-    public void setPlayerHand (List < Map < Card, Card.CardValue >> playerHand){
-        this.playerHand = playerHand;
-    }
 
-    public PlayPile getPile() {
-        return pile;
-    }
-
-    public void setPile(PlayPile pile) {
-        this.pile = pile;
+    public static void setHasCards(boolean value) {
+        hasCards = value;
     }
 
     public static Boolean getHasCards() {
