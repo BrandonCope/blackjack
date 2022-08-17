@@ -1,9 +1,6 @@
 package com.games.crazyUno;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class PlayPile extends Deck {
     // Fields
@@ -25,6 +22,14 @@ public class PlayPile extends Deck {
 
     public List<Map<Card, Card.CardValue>> getPile() {
         return this.pileList;
+    }
+
+    public void showPile() {
+        Map<Card, Card.CardValue> topCard = getPile().get(0);
+        Set<Card> colors = topCard.keySet();
+        for (Card color : colors) {
+            System.out.printf("Play Pile: " + "\033[%sm%s\033[0m", color, topCard.values());
+        }
     }
 
     public void setPileList(List<Map<Card, Card.CardValue>> pileList) {
