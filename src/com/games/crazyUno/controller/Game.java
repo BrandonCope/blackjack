@@ -39,7 +39,6 @@ public class Game {
 
 
     }
-    
     // Logic for printing players hand with color
 //  for (Map<Card, Card.CardValue> card : playerHand) {
 //            Set<Card> colors = card.keySet();
