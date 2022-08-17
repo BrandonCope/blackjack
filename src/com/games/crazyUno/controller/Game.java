@@ -20,9 +20,6 @@ public class Game {
     private int players;
     private PlayPile pile = new PlayPile();
     private List<List<Map<Card, Card.CardValue>>> playerHands = new ArrayList<>();
-//    private List<Map<Card, Card.CardValue>> playerHand2 = new ArrayList<>();
-//    private List<Map<Card, Card.CardValue>> playerHand3 = new ArrayList<>();
-//    private List<Map<Card, Card.CardValue>> playerHand4 = new ArrayList<>();
 
     public void execute() throws IOException {
         welcome();
@@ -34,17 +31,8 @@ public class Game {
         createPlayer();
         playGame();
     }
-    // Logic for printing players hand with color
-//  for (Map<Card, Card.CardValue> card : playerHand) {
-//            Set<Card> colors = card.keySet();
-//            for (Card color : colors) {
-//                System.out.printf("\033[%sm%s\033[0m", color ,card.values());
-//            }
-//        }
-
 
     private void welcome() throws IOException {
-
         System.out.println();
         System.out.println("\033[92m" + Files.readString(Path.of("resources/welcome.txt")) + "\033[0m");
         System.out.println();
@@ -90,7 +78,7 @@ public class Game {
                 case 2:
                     while (!validInput1) {
                         System.out.println("Player 1 enter your name: ");
-                        input1 = scanner.nextLine().trim().toUpperCase();
+                        input1 = scanner.nextLine().trim();
                         if (input1.matches("\\w{1,10}")) {
                             names.add(input1);
                             validInput1 = true;
@@ -100,7 +88,7 @@ public class Game {
                     }
                     while (!validInput2) {
                         System.out.println("Player 2 enter your name: ");
-                        input2 = scanner.nextLine().trim().toUpperCase();
+                        input2 = scanner.nextLine().trim();
                         if (input2.matches("\\w{1,10}")) {
                             names.add(input2);
                             validInput2 = true;
@@ -117,7 +105,7 @@ public class Game {
                 case 3:
                     while (!validInput1) {
                         System.out.println("Player 1 enter your name: ");
-                        input1 = scanner.nextLine().trim().toUpperCase();
+                        input1 = scanner.nextLine().trim();
                         if (input1.matches("\\w{1,10}")) {
                             names.add(input1);
                             validInput1 = true;
@@ -127,7 +115,7 @@ public class Game {
                     }
                     while (!validInput2) {
                         System.out.println("Player 2 enter your name: ");
-                        input2 = scanner.nextLine().trim().toUpperCase();
+                        input2 = scanner.nextLine().trim();
                         if (input2.matches("\\w{1,10}")) {
                             names.add(input2);
                             validInput2 = true;
@@ -137,7 +125,7 @@ public class Game {
                     }
                     while (!validInput3) {
                         System.out.println("Player 3 enter your name: ");
-                        input3 = scanner.nextLine().trim().toUpperCase();
+                        input3 = scanner.nextLine().trim();
                         if (input3.matches("\\w{1,10}")) {
                             names.add(input3);
                             validInput3 = true;
@@ -155,7 +143,7 @@ public class Game {
                 case 4:
                     while (!validInput1) {
                         System.out.println("Player 1 enter your name: ");
-                        input1 = scanner.nextLine().trim().toUpperCase();
+                        input1 = scanner.nextLine().trim();
                         if (input1.matches("\\w{1,10}")) {
                             names.add(input1);
                             validInput1 = true;
@@ -165,7 +153,7 @@ public class Game {
                     }
                     while (!validInput2) {
                         System.out.println("Player 2 enter your name: ");
-                        input2 = scanner.nextLine().trim().toUpperCase();
+                        input2 = scanner.nextLine().trim();
                         if (input2.matches("\\w{1,10}")) {
                             names.add(input2);
                             validInput2 = true;
@@ -175,7 +163,7 @@ public class Game {
                     }
                     while (!validInput3) {
                         System.out.println("Player 3 enter your name: ");
-                        input3 = scanner.nextLine().trim().toUpperCase();
+                        input3 = scanner.nextLine().trim();
                         if (input3.matches("\\w{1,10}")) {
                             names.add(input3);
                             validInput3 = true;
@@ -185,7 +173,7 @@ public class Game {
                     }
                     while (!validInput4) {
                         System.out.println("Player 4 enter your name: ");
-                        input4 = scanner.nextLine().trim().toUpperCase();
+                        input4 = scanner.nextLine().trim();
                         if (input4.matches("\\w{1,10}")) {
                             names.add(input4);
                             validInput4 = true;
@@ -213,6 +201,7 @@ public class Game {
 
     private List<List<Map<Card, Card.CardValue>>> buildHand() {
         List<List<Map<Card, Card.CardValue>>> hands = new ArrayList<>();
+
         List<Map<Card, Card.CardValue>> playerHand1 = new ArrayList<>();
         List<Map<Card, Card.CardValue>> playerHand2 = new ArrayList<>();
         List<Map<Card, Card.CardValue>> playerHand3 = new ArrayList<>();
@@ -235,7 +224,7 @@ public class Game {
                     Map<Card, Card.CardValue> card3 = pile.drawCard();
                     playerHand1.add(card1);
                     playerHand2.add(card2);
-                    playerHand3.add(card2);
+                    playerHand3.add(card3);
                 }
                 hands.add(playerHand1);
                 hands.add(playerHand2);
@@ -250,7 +239,7 @@ public class Game {
                     playerHand1.add(card1);
                     playerHand2.add(card2);
                     playerHand3.add(card3);
-                    playerHand3.add(card4);
+                    playerHand4.add(card4);
                 }
                 hands.add(playerHand1);
                 hands.add(playerHand2);
@@ -263,13 +252,6 @@ public class Game {
 
     private void buildPile() {
         pile.createPile();
-//        Map<Card, Card.CardValue> topCard = pile.getPile().get(0);
-//
-//
-//        Set<Card> colors = topCard.keySet();
-//        for (Card color : colors) {
-//            System.out.printf("Play Pile: " + "\033[%sm%s\033[0m", color, topCard.values());
-//        }
     }
 
 
@@ -288,7 +270,7 @@ public class Game {
                 player1 = new Player(names.get(0), playerHands.get(0));
                 player2 = new Player(names.get(1), playerHands.get(1));
                 player3 = new Player(names.get(2), playerHands.get(2));
-                player3 = new Player(names.get(2), playerHands.get(3));
+                player4 = new Player(names.get(3), playerHands.get(3));
                 break;
         }
     }
@@ -299,17 +281,39 @@ public class Game {
 
         while (!selectValidCard) {
             pile.showPile();
-            player.showHand();
-            System.out.println("Select a card");
-            String input = scanner.nextLine().trim();
-            if (input.matches("\\d{1,2}")) {
-                cardSelected = Integer.parseInt(input);
-                // if input isValid sets cardSelected
-                if (player.cardIsValid(cardSelected)) {
+            System.out.println();
+            player.showHand(player);
+            System.out.println();
+            if (pile.validPlayableCards(player.getPlayerHand())) {
+                System.out.printf("%s Please Select A Card Between [1-%s]...",
+                        player.getPlayerName(), player.getPlayerHand().size());
+                String input = scanner.nextLine().trim();
+                if (input.matches("\\d{1,2}")) {
+                    cardSelected = Integer.parseInt(input) - 1;
+                    // if input isValid sets cardSelected
                     Map<Card, Card.CardValue> card = player.getPlayerHand().get(cardSelected);
-                    player.playCard(card);
-                    selectValidCard = true;
+
+                    if (pile.cardIsValid(card)) {
+                        pile.playCard(card);
+                        player.getPlayerHand().remove(cardSelected);
+                        if (player.getPlayerHand().size() == 0) {
+                            Player.setHasCards(false);
+                            System.out.printf("Congratulations %s has won the game!!!", player.getPlayerName());
+                        }
+                        selectValidCard = true;
+                    }
                 }
+            } else {
+                // Draw card
+                if (pile.getDeckMap().isEmpty()) {
+//                    pile.resetDeck();
+                } else {
+                    System.out.println("You have no playable cards! Press Enter to Draw a card...");
+                    scanner.nextLine();
+                    Map<Card, Card.CardValue> newCard = pile.drawCard();
+                    player.getPlayerHand().add(newCard);
+                }
+
             }
         }
     }
@@ -324,17 +328,21 @@ public class Game {
                     selectCard(player2);
                 }
                 break;
-//            case 3:
-//                player1.playCard(cardSelected);
-//                player2.playCard(cardSelected);
-//                player3.playCard(cardSelected);
-//                break;
-//            case 4:
-//                player1.playCard(cardSelected);
-//                player2.playCard(cardSelected);
-//                player3.playCard(cardSelected);
-//                player4.playCard(cardSelected);
-//                break;
+            case 3:
+                while (Player.getHasCards()) {
+                    selectCard(player1);
+                    selectCard(player2);
+                    selectCard(player3);
+                }
+                break;
+            case 4:
+                while (Player.getHasCards()) {
+                    selectCard(player1);
+                    selectCard(player2);
+                    selectCard(player3);
+                    selectCard(player4);
+                }
+                break;
         }
     }
 }
