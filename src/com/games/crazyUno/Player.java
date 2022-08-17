@@ -10,7 +10,7 @@ public class Player {
     private String playerName;
     private PlayPile pile;
     private List<Map<Card, Card.CardValue>> playerHand = new ArrayList<>();
-    private static Boolean hasCards;
+    private static Boolean hasCards = true;
     //Constructor
     public Player(String playerName, List<Map<Card, Card.CardValue>> playerHand) {
         this.pile= pile;
@@ -19,28 +19,25 @@ public class Player {
     }
 
     //Business Methods
-    //We are starting the game. Building a deck with 40cards. Creating a player hands with 7 Cards.
-    //
-    public void startGame() {
-        pile.buildDeck();
-        for (int i = 0; i < 7; i++) {
-            Map<Card, Card.CardValue> card = pile.drawCard();
-            this.playerHand.add(card);
-
-        }
-        pile.createPile();
-    }
-
-    public void playCard () {
+    public void playCard (Map<Card, Card.CardValue> card) {
 
 
     }
 
-    public void reset () {
-        pile.buildDeck();
-        this.setPlayerHand(new ArrayList<>());
+    public boolean cardIsValid(int cardSelected) {
+        // check if players selected card matches playPile
+        return false;
+    }
+
+    public void showHand() {
 
     }
+
+//    public void reset () {
+//        pile.buildDeck();
+//        this.setPlayerHand(new ArrayList<>());
+//
+//    }
         //Accessor Methods
     public String getPlayerName () {
         return playerName;
