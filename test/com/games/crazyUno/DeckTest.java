@@ -14,18 +14,18 @@ public class DeckTest {
         Map<Integer, Map<Card, Card.CardValue>> expected = new TreeMap<>();
         Deck result = new Deck();
         int cardCount = 0;
+        for (int i = 0; i < 2; i++) {
+            for (Card card : Card.values()) {
+                for (Card.CardValue value : Card.CardValue.values()) {
+                    Map<Card, Card.CardValue> newCard = new HashMap<>();
+                    newCard.put(card, value);
 
-        for (Card card : Card.values()) {
-            for (Card.CardValue value : Card.CardValue.values()) {
-                Map<Card, Card.CardValue> newCard = new HashMap<>();
-                newCard.put(card, value);
+                    cardCount += 1;
 
-                cardCount += 1;
-
-                expected.put(cardCount, newCard);
+                    expected.put(cardCount, newCard);
+                }
             }
         }
-
         assertEquals(expected, result.buildDeck());
     }
 
@@ -34,26 +34,24 @@ public class DeckTest {
         Deck newDeck = new Deck();
         newDeck.buildDeck();
         Map<Card, Card.CardValue> newCard = newDeck.drawCard();
-
-        assertFalse(newDeck.getDeckMap().containsValue(newCard));
+        assertTrue(newDeck.getDeckMap().size() == 79);
         newDeck.buildDeck();
-        assertTrue(newDeck.getDeckMap().containsValue(newCard));
-
+        assertTrue(newDeck.getDeckMap().size() == 80);
     }
 
     @Test
     public void drawCard_returnOneCard_whenMethodCalled() {
         Deck newDeck = new Deck();
-        Map<Card, Card.CardValue> newCard = new TreeMap<>();
+        Map<Card, Card.CardValue> newCard = new HashMap<>();
         newDeck.buildDeck();
         List<Map<Card, Card.CardValue>> keys = new ArrayList(newDeck.getDeckMap().keySet());
         Collections.shuffle(keys);
         newCard =  newDeck.getDeckMap().get(keys.get(0));
+
         assertTrue(newDeck.getDeckMap().containsValue(newCard));
 
         newDeck.getDeckMap().remove(keys.get(0));
-
-        assertFalse(newDeck.getDeckMap().containsValue(newCard));
+        assertFalse(newDeck.getDeckMap().containsKey(keys.get(0)));
     }
 
     @Test

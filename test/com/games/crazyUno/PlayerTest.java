@@ -16,7 +16,7 @@ public class PlayerTest {
 
 //    @Test
 //    public void startGame() {
-//        Player player1 = new Player("NAME", new PlayPile());
+////        Player player1 = new Player("NAME", new PlayPile());
 //
 //        player1.startGame();
 //        assertEquals(7,player1.getPlayerHand().size());
@@ -32,9 +32,9 @@ public class PlayerTest {
 //
 //    }
 
-    @Test
-    public void reset() {
-        PlayPile pile = new PlayPile();
-        //pile.
-    }
+//    @Test
+//    public void reset() {
+//        PlayPile pile = new PlayPile();
+//        //pile.
+//    }
 }

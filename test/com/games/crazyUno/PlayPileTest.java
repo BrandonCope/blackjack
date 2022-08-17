@@ -19,11 +19,8 @@ public class PlayPileTest {
 
     @Test
     public void createPile_shouldAddOneCardFromDeckToPileMap_whenDeckIsNotEmpty() {
-//        Deck newDeck = new Deck();
         PlayPile pile = new PlayPile();
         pile.buildDeck();
-//        System.out.println("DeckMap: " + newDeck.getDeckMap());
-        System.out.println(pile.getPile());
 
         assertTrue(pile.getPile().isEmpty());
         pile.createPile();

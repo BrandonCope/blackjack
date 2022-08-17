@@ -1,8 +1,12 @@
 package com.games.crazyUno;
 
 public enum Card {
-        RED, BLUE, YELLOW, GREEN;
-    public enum CardValue{
+    RED("31"),
+    BLUE("34"),
+    YELLOW("33"),
+    GREEN("32");
+
+    public enum CardValue {
         ZERO("0"),
         ONE("1"),
         TWO("2"),
@@ -12,7 +16,8 @@ public enum Card {
         SIX("6"),
         SEVEN("7"),
         EIGHT("8"),
-        NINE("9"),;
+        NINE("9"),
+        ;
 
         private final String cardValue;
 
@@ -20,11 +25,27 @@ public enum Card {
             this.cardValue = cardValue;
 
         }
-        public String cardValue(){
+
+        public String cardValue() {
             return cardValue;
         }
-        public String toString(){
+
+        public String toString() {
             return cardValue();
         }
+    }
+    private final String card;
+
+    Card(String cardValue) {
+        this.card = cardValue;
+
+    }
+
+    public String card() {
+        return card;
+    }
+
+    public String toString() {
+        return card();
     }
 }
