@@ -1,4 +1,4 @@
-package com.games.crazyUno.domain.controller;
+package com.games.crazyUno.controller;
 
 import com.games.crazyUno.domain.Card;
 import com.games.crazyUno.domain.PlayPile;

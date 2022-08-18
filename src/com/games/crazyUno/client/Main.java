@@ -1,6 +1,6 @@
-package com.games.crazyUno.domain.client;
+package com.games.crazyUno.client;
 
-import com.games.crazyUno.domain.controller.Game;
+import com.games.crazyUno.controller.Game;
 
 import java.io.IOException;
 
