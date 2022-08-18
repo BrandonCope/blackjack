@@ -32,7 +32,7 @@ public class PlayPile extends Deck {
         }
     }
 
-    public  boolean validPlayableCards(List<Map<Card, Card.CardValue>> playerHand) {
+    public boolean validPlayableCards(List<Map<Card, Card.CardValue>> playerHand) {
         boolean result = false;
         Map<Card, Card.CardValue> topCard = getPile().get(getPile().size() - 1);
         for (Map<Card, Card.CardValue> card : playerHand) {
@@ -57,7 +57,7 @@ public class PlayPile extends Deck {
         return result;
     }
 
-    public void playCard (Map<Card, Card.CardValue> card) {
+    public void playCard(Map<Card, Card.CardValue> card) {
         pileList.add(card);
     }
 
@@ -66,7 +66,7 @@ public class PlayPile extends Deck {
         this.pileList = pileList;
     }
 
-    // resets playPile
+    // resets playPile and deck
     public void resetDeck() {
         int cardCount = 0;
         List<Map<Card, Card.CardValue>> resetPile = getPile();
@@ -77,18 +77,3 @@ public class PlayPile extends Deck {
         }
     }
 }
-
-// while (!validInput) {
-//         System.out.println("How many players? [2-4]");
-//         String input = scanner.nextLine().trim().toUpperCase();
-//         if (input.matches("\\d")) {
-    //         players = Integer.parseInt(input);
-    //         if (players >= 2 && players <= 4) {
-        //         validInput = true;
-        //         } else {
-        //         System.out.println("Please input a number [2-4]...");
-        //         }
-    //     } else {
-    //         System.out.println("Please input a number [2-4]...");
-    //     }
-//     }

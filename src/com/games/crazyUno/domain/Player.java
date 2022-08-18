@@ -12,6 +12,7 @@ public class Player {
     private PlayPile pile;
     private List<Map<Card, Card.CardValue>> playerHand = new ArrayList<>();
     private static Boolean hasCards = true;
+
     //Constructor
     public Player(String playerName, List<Map<Card, Card.CardValue>> playerHand) {
         this.playerName = playerName;
@@ -27,15 +28,14 @@ public class Player {
                 System.out.printf("\033[%sm%s\033[0m", color, card.values());
             }
         }
-
     }
 
     //Accessor Methods
-    public String getPlayerName () {
+    public String getPlayerName() {
         return playerName;
     }
 
-    public List<Map<Card, Card.CardValue>> getPlayerHand () {
+    public List<Map<Card, Card.CardValue>> getPlayerHand() {
         return playerHand;
     }
 
@@ -45,9 +45,5 @@ public class Player {
 
     public static Boolean getHasCards() {
         return hasCards;
-    }
-
-    public void setHasCards(Boolean hasCards) {
-        this.hasCards = hasCards;
     }
 }
