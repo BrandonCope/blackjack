@@ -48,7 +48,7 @@ public class DeckTest {
         newDeck.buildDeck();
         List<Map<Card, Card.CardValue>> keys = new ArrayList(newDeck.getDeckMap().keySet());
         Collections.shuffle(keys);
-        newCard =  newDeck.getDeckMap().get(keys.get(0));
+        newCard = newDeck.getDeckMap().get(keys.get(0));
 
         assertTrue(newDeck.getDeckMap().containsValue(newCard));
 
@@ -59,7 +59,7 @@ public class DeckTest {
     @Test
     public void getDeckMap_shouldReturnEmpty_whenDeckHasNotBeenBuilt() {
         Deck newDeck = new Deck();
-        assertEquals(new TreeMap<>() , newDeck.getDeckMap());
+        assertEquals(new TreeMap<>(), newDeck.getDeckMap());
     }
 
     @Test

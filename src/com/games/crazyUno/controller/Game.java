@@ -12,13 +12,16 @@ import java.util.*;
 public class Game {
     private Scanner scanner = new Scanner(System.in);
     private int players;
-    private List<String> names;
+    private List<String> names = new ArrayList<>();
     private PlayPile pile = new PlayPile();
     private List<List<Map<Card, Card.CardValue>>> playerHands = new ArrayList<>();
     private Player player1;
     private Player player2;
     private Player player3;
     private Player player4;
+    private boolean selectValidCard = false;
+    private boolean validNameInput = false;
+
 
     public void execute() throws IOException {
         welcome();
@@ -62,12 +65,7 @@ public class Game {
     }
 
     private List<String> promptForName() {
-        List<String> names = new ArrayList<>();
         boolean validInput = false;
-        boolean validInput1 = false;
-        boolean validInput2 = false;
-        boolean validInput3 = false;
-        boolean validInput4 = false;
         while (!validInput) {
             String input1 = null;
             String input2 = null;
@@ -75,110 +73,62 @@ public class Game {
             String input4 = null;
             switch (players) {
                 case 2:
-                    while (!validInput1) {
+                    while (!validNameInput) {
                         System.out.println("Player 1 enter your name: ");
-                        input1 = scanner.nextLine().trim();
-                        if (input1.matches("\\w{1,10}")) {
-                            names.add(input1);
-                            validInput1 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input1 = promptPlayerName();
                     }
-                    while (!validInput2) {
+                    setValidNameInput(false);
+                    while (!validNameInput) {
                         System.out.println("Player 2 enter your name: ");
-                        input2 = scanner.nextLine().trim();
-                        if (input2.matches("\\w{1,10}")) {
-                            names.add(input2);
-                            validInput2 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input2 = promptPlayerName();
                     }
                     if (input1 != null && input2 != null) {
                         System.out.println("Player1: " + input1);
                         System.out.println("Player2: " + input2);
                         validInput = true;
-                        break;
                     }
+                    break;
                 case 3:
-                    while (!validInput1) {
+                    while (!validNameInput) {
                         System.out.println("Player 1 enter your name: ");
-                        input1 = scanner.nextLine().trim();
-                        if (input1.matches("\\w{1,10}")) {
-                            names.add(input1);
-                            validInput1 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input1 = promptPlayerName();
                     }
-                    while (!validInput2) {
+                    setValidNameInput(false);
+                    while (!validNameInput) {
                         System.out.println("Player 2 enter your name: ");
-                        input2 = scanner.nextLine().trim();
-                        if (input2.matches("\\w{1,10}")) {
-                            names.add(input2);
-                            validInput2 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input2 = promptPlayerName();
                     }
-                    while (!validInput3) {
+                    setValidNameInput(false);
+                    while (!validNameInput) {
                         System.out.println("Player 3 enter your name: ");
-                        input3 = scanner.nextLine().trim();
-                        if (input3.matches("\\w{1,10}")) {
-                            names.add(input3);
-                            validInput3 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input3 = promptPlayerName();
                     }
                     if (input1 != null && input2 != null && input3 != null) {
                         System.out.println("Player1: " + input1);
                         System.out.println("Player2: " + input2);
                         System.out.println("Player2: " + input3);
                         validInput = true;
-                        break;
                     }
+                    break;
                 case 4:
-                    while (!validInput1) {
+                    while (!validNameInput) {
                         System.out.println("Player 1 enter your name: ");
-                        input1 = scanner.nextLine().trim();
-                        if (input1.matches("\\w{1,10}")) {
-                            names.add(input1);
-                            validInput1 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input1 = promptPlayerName();
                     }
-                    while (!validInput2) {
+                    setValidNameInput(false);
+                    while (!validNameInput) {
                         System.out.println("Player 2 enter your name: ");
-                        input2 = scanner.nextLine().trim();
-                        if (input2.matches("\\w{1,10}")) {
-                            names.add(input2);
-                            validInput2 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input2 = promptPlayerName();
                     }
-                    while (!validInput3) {
+                    setValidNameInput(false);
+                    while (!validNameInput) {
                         System.out.println("Player 3 enter your name: ");
-                        input3 = scanner.nextLine().trim();
-                        if (input3.matches("\\w{1,10}")) {
-                            names.add(input3);
-                            validInput3 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input3 = promptPlayerName();
                     }
-                    while (!validInput4) {
+                    setValidNameInput(false);
+                    while (!validNameInput) {
                         System.out.println("Player 4 enter your name: ");
-                        input4 = scanner.nextLine().trim();
-                        if (input4.matches("\\w{1,10}")) {
-                            names.add(input4);
-                            validInput4 = true;
-                        } else {
-                            System.out.println("Please enter a name...");
-                        }
+                        input4 = promptPlayerName();
                     }
                     if (input1 != null && input2 != null && input3 != null && input4 != null) {
                         System.out.println("Player1: " + input1);
@@ -186,12 +136,23 @@ public class Game {
                         System.out.println("Player2: " + input3);
                         System.out.println("Player2: " + input4);
                         validInput = true;
-                        break;
                     }
+                    break;
             }
-
         }
         return names;
+    }
+
+    private String promptPlayerName() {
+        String input = null;
+        input = scanner.nextLine().trim();
+        if (input.matches("\\w{1,10}")) {
+            names.add(input);
+            setValidNameInput(true);
+        } else {
+            System.out.println("Please enter a name...");
+        }
+        return input;
     }
 
     private void buildDeck() {
@@ -252,7 +213,6 @@ public class Game {
         pile.createPile();
     }
 
-
     private void createPlayer() {
         switch (players) {
             case 2:
@@ -273,108 +233,129 @@ public class Game {
         }
     }
 
-    private void selectCard(Player player) throws IOException {
-        int cardSelected;
-        boolean selectValidCard = false;
-        while (!selectValidCard) {
-            pile.showPile();
-            System.out.println();
-            player.showHand(player);
-            System.out.println();
-            if (pile.validPlayableCards(player.getPlayerHand())) {
-                while (!selectValidCard) {
-                    System.out.printf("%s Please Select A Card Between [1-%s]...", player.getPlayerName(), player.getPlayerHand().size());
-                    String input = scanner.nextLine().trim().toUpperCase();
-                    if (input.matches("\\d") || input.matches("\\d{1,2}")) {
-                        cardSelected = Integer.parseInt(input);
-                        int leftBound = 1;
-                        int rightBound = player.getPlayerHand().size();
-                        if (cardSelected >= leftBound && cardSelected <= rightBound) {
-                            cardSelected = Integer.parseInt(input) - 1;
-                            // if input isValid sets cardSelected
-                            Map<Card, Card.CardValue> card = player.getPlayerHand().get(cardSelected);
-                            if (pile.cardIsValid(card)) {
-                                pile.playCard(card);
-                                player.getPlayerHand().remove(cardSelected);
-                                if (player.getPlayerHand().size() == 0) {
-                                    Player.setHasCards(false);
-                                    System.out.printf("Congratulations %s has won the game!!!", player.getPlayerName());
-                                    System.out.println();
-                                    System.out.println("Press Enter to Start A New Game...");
-                                    scanner.nextLine();
-                                    Game app = new Game();
-                                    app.execute();
-                                }
-                                selectValidCard = true;
-                            } else {
-                                System.out.println();
-                                System.out.println("Please Select A Valid Card...");
-                                pile.showPile();
-                                System.out.println();
-                                player.showHand(player);
-                                System.out.println();
-                            }
-                        } else {
-                            System.out.println();
-                            System.out.println("Please Select A Valid Card...");
-                            pile.showPile();
-                            System.out.println();
-                            player.showHand(player);
-                            System.out.println();
-                        }
-                    } else {
-                        System.out.println();
-                        System.out.println("Please Select A Valid Card...");
-                        pile.showPile();
-                        System.out.println();
-                        player.showHand(player);
-                        System.out.println();
-                    }
-                }
-            } else {
-                // Draw card
-                if (pile.getDeckMap().isEmpty()) {
-                    pile.resetDeck();
-                } else {
-                    System.out.println("You have no playable cards! Press Enter to Draw a card...");
-                    scanner.nextLine();
-                    Map<Card, Card.CardValue> newCard = pile.drawCard();
-                    player.getPlayerHand().add(newCard);
-                }
-            }
-        }
-    }
-
-
     private void playGame() throws IOException {
         switch (players) {
             case 2:
                 while (Player.getHasCards()) {
                     selectCard(player1);
-                    System.out.println();
                     selectCard(player2);
                 }
                 break;
             case 3:
                 while (Player.getHasCards()) {
                     selectCard(player1);
-                    System.out.println();
                     selectCard(player2);
-                    System.out.println();
                     selectCard(player3);
                 }
                 break;
             case 4:
                 while (Player.getHasCards()) {
                     selectCard(player1);
-                    System.out.println();
                     selectCard(player2);
-                    System.out.println();
                     selectCard(player3);
-                    System.out.println();
                     selectCard(player4);
                 }
                 break;
         }
+    }
+
+    private void selectCard(Player player) throws IOException {
+        int cardSelected = 0;
+        setSelectValidCard(false);
+        while (!isSelectValidCard()) {
+            System.out.println();
+            showBoard(player);
+            if (pile.validPlayableCards(player.getPlayerHand())) {
+                promptPlayerToSelectCard(player, cardSelected);
+            } else {
+                // Draw card
+                promptPlayerToDraw(player);
+            }
+        }
+    }
+
+    private void promptPlayerToSelectCard(Player player, int cardSelected) throws IOException {
+        while (!isSelectValidCard()) {
+            System.out.printf("%s Please Select A Card Between [1-%s]...", player.getPlayerName(), player.getPlayerHand().size());
+            String input = scanner.nextLine().trim().toUpperCase();
+            if (input.matches("\\d") || input.matches("\\d{1,2}")) {
+                cardSelected = Integer.parseInt(input);
+                int leftBound = 1;
+                int rightBound = player.getPlayerHand().size();
+                if (cardSelected >= leftBound && cardSelected <= rightBound) {
+                    cardSelected = Integer.parseInt(input) - 1;
+                    // if input isValid sets cardSelected
+                    checkIfCardIsValid(player, cardSelected);
+                } else {
+                    promptPlayerToSelectValidCard(player);
+                }
+            } else {
+                promptPlayerToSelectValidCard(player);
+            }
+        }
+    }
+
+    private void checkIfCardIsValid(Player player, int cardSelected) throws IOException {
+        Map<Card, Card.CardValue> card = player.getPlayerHand().get(cardSelected);
+        if (pile.cardIsValid(card)) {
+            pile.playCard(card);
+            player.getPlayerHand().remove(cardSelected);
+            if (player.getPlayerHand().size() == 0) {
+                promptPlayerGameWin(player);
+            }
+            setSelectValidCard(true);
+        } else {
+            promptPlayerToSelectValidCard(player);
+        }
+    }
+
+    private void promptPlayerGameWin(Player player) throws IOException {
+        Player.setHasCards(false);
+        System.out.printf("Congratulations %s has won the game!!!", player.getPlayerName());
+        System.out.println();
+        System.out.println("Press Enter to Start A New Game...");
+        scanner.nextLine();
+        Game app = new Game();
+        app.execute();
+    }
+
+    private void showBoard(Player player) {
+        pile.showPile();
+        System.out.println();
+        player.showHand(player);
+        System.out.println();
+    }
+
+    private void promptPlayerToSelectValidCard(Player player) {
+        System.out.println();
+        System.out.println("Please Select A Valid Card...");
+        showBoard(player);
+    }
+
+    private void promptPlayerToDraw(Player player) {
+        if (pile.getDeckMap().isEmpty()) {
+            pile.resetDeck();
+        } else {
+            System.out.println("You have no playable cards! Press Enter to Draw a card...");
+            scanner.nextLine();
+            Map<Card, Card.CardValue> newCard = pile.drawCard();
+            player.getPlayerHand().add(newCard);
+        }
+    }
+
+    private boolean isSelectValidCard() {
+        return selectValidCard;
+    }
+
+    private void setSelectValidCard(boolean selectValidCard) {
+        this.selectValidCard = selectValidCard;
+    }
+
+    private boolean isValidNameInput() {
+        return validNameInput;
+    }
+
+    private void setValidNameInput(boolean validNameInput) {
+        this.validNameInput = validNameInput;
     }
 }

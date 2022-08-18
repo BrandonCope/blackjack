@@ -15,29 +15,29 @@ public class PlayPileTest {
 //        Map<Integer, Map<Card, Card.CardValue>> pileMap = new TreeMap<>();
 //    }
 
-    @Test
-    public void createPile_shouldAddOneCardFromDeckToPileMap_whenDeckIsNotEmpty() {
-        PlayPile pile = new PlayPile();
-        pile.buildDeck();
-
-        assertTrue(pile.getPile().isEmpty());
-        pile.createPile();
-        assertFalse(pile.getPile().isEmpty());
-    }
-
-    @Test
-    public void getPileMap_shouldReturnEmpty_whenPileHasNotBeenBuilt() {
-        PlayPile pile = new PlayPile();
-        assertTrue(pile.getPile().isEmpty());
-    }
-
-    @Test
-    public void getPileMap_shouldReturnPileList_whenPileHasBeenBuilt() {
-        PlayPile pile = new PlayPile();
-        pile.buildDeck();
-        pile.createPile();
-        assertFalse(pile.getPile().isEmpty());
-    }
+//    @Test
+//    public void createPile_shouldAddOneCardFromDeckToPileMap_whenDeckIsNotEmpty() {
+//        PlayPile pile = new PlayPile();
+//        pile.buildDeck();
+//
+//        assertTrue(pile.getPile().isEmpty());
+//        pile.createPile();
+//        assertFalse(pile.getPile().isEmpty());
+//    }
+//
+//    @Test
+//    public void getPileMap_shouldReturnEmpty_whenPileHasNotBeenBuilt() {
+//        PlayPile pile = new PlayPile();
+//        assertTrue(pile.getPile().isEmpty());
+//    }
+//
+//    @Test
+//    public void getPileMap_shouldReturnPileList_whenPileHasBeenBuilt() {
+//        PlayPile pile = new PlayPile();
+//        pile.buildDeck();
+//        pile.createPile();
+//        assertFalse(pile.getPile().isEmpty());
+//    }
 
 //    @Test
 //    public void cardIsValid() {
