@@ -275,71 +275,106 @@ public class Game {
         }
     }
 
-    private void selectCard(Player player) {
+    private void selectCard(Player player) throws IOException {
         int cardSelected;
         boolean selectValidCard = false;
-
         while (!selectValidCard) {
             pile.showPile();
             System.out.println();
             player.showHand(player);
             System.out.println();
             if (pile.validPlayableCards(player.getPlayerHand())) {
-                System.out.printf("%s Please Select A Card Between [1-%s]...",
-                        player.getPlayerName(), player.getPlayerHand().size());
-                String input = scanner.nextLine().trim();
-                if (input.matches("\\d{1,2}")) {
-                    cardSelected = Integer.parseInt(input) - 1;
-                    // if input isValid sets cardSelected
-                    Map<Card, Card.CardValue> card = player.getPlayerHand().get(cardSelected);
 
-                    if (pile.cardIsValid(card)) {
-                        pile.playCard(card);
-                        player.getPlayerHand().remove(cardSelected);
-                        if (player.getPlayerHand().size() == 0) {
-                            Player.setHasCards(false);
-                            System.out.printf("Congratulations %s has won the game!!!", player.getPlayerName());
+                while (!selectValidCard) {
+                    System.out.printf("%s Please Select A Card Between [1-%s]...", player.getPlayerName(), player.getPlayerHand().size());
+                    String input = scanner.nextLine().trim().toUpperCase();
+                    if (input.matches("\\d") || input.matches("\\d{1,2}")) {
+                        cardSelected = Integer.parseInt(input);
+                        int leftBound = 1;
+                        int rightBound = player.getPlayerHand().size();
+                        if (cardSelected >= leftBound && cardSelected <= rightBound) {
+                            cardSelected = Integer.parseInt(input) - 1;
+                            // if input isValid sets cardSelected
+                            Map<Card, Card.CardValue> card = player.getPlayerHand().get(cardSelected);
+                            if (pile.cardIsValid(card)) {
+                                pile.playCard(card);
+                                player.getPlayerHand().remove(cardSelected);
+                                if (player.getPlayerHand().size() == 0) {
+                                    Player.setHasCards(false);
+                                    System.out.printf("Congratulations %s has won the game!!!", player.getPlayerName());
+                                    System.out.println();
+                                    System.out.println("Press Enter to Start A New Game...");
+                                    scanner.nextLine();
+                                    Game app = new Game();
+                                    app.execute();
+                                }
+                                selectValidCard = true;
+                            } else {
+                                System.out.println();
+                                System.out.println("Please Select A Valid Card...");
+                                pile.showPile();
+                                System.out.println();
+                                player.showHand(player);
+                                System.out.println();
+                            }
+                        } else {
+                            System.out.println();
+                            System.out.println("Please Select A Valid Card...");
+                            pile.showPile();
+                            System.out.println();
+                            player.showHand(player);
+                            System.out.println();
                         }
-                        selectValidCard = true;
+                    } else {
+                        System.out.println();
+                        System.out.println("Please Select A Valid Card...");
+                        pile.showPile();
+                        System.out.println();
+                        player.showHand(player);
+                        System.out.println();
                     }
                 }
             } else {
                 // Draw card
                 if (pile.getDeckMap().isEmpty()) {
-//                    pile.resetDeck();
+                    pile.resetDeck();
                 } else {
                     System.out.println("You have no playable cards! Press Enter to Draw a card...");
                     scanner.nextLine();
                     Map<Card, Card.CardValue> newCard = pile.drawCard();
                     player.getPlayerHand().add(newCard);
                 }
-
             }
         }
     }
 
 
-    private void playGame() {
-
+    private void playGame() throws IOException {
         switch (players) {
             case 2:
                 while (Player.getHasCards()) {
                     selectCard(player1);
+                    System.out.println();
                     selectCard(player2);
                 }
                 break;
             case 3:
                 while (Player.getHasCards()) {
                     selectCard(player1);
+                    System.out.println();
                     selectCard(player2);
+                    System.out.println();
                     selectCard(player3);
                 }
                 break;
             case 4:
                 while (Player.getHasCards()) {
                     selectCard(player1);
+                    System.out.println();
                     selectCard(player2);
+                    System.out.println();
                     selectCard(player3);
+                    System.out.println();
                     selectCard(player4);
                 }
                 break;
