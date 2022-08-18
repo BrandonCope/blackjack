@@ -10,16 +10,15 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class Game {
+    private Scanner scanner = new Scanner(System.in);
+    private int players;
+    private List<String> names;
+    private PlayPile pile = new PlayPile();
+    private List<List<Map<Card, Card.CardValue>>> playerHands = new ArrayList<>();
     private Player player1;
     private Player player2;
     private Player player3;
     private Player player4;
-    private Scanner scanner = new Scanner(System.in);
-    private List<String> names;
-
-    private int players;
-    private PlayPile pile = new PlayPile();
-    private List<List<Map<Card, Card.CardValue>>> playerHands = new ArrayList<>();
 
     public void execute() throws IOException {
         welcome();
@@ -44,7 +43,6 @@ public class Game {
 
     private int promptForPlayers() {
         int players = 0;
-
         boolean validInput = false;
         while (!validInput) {
             System.out.println("How many players? [2-4]");
@@ -60,7 +58,6 @@ public class Game {
                 System.out.println("Please input a number [2-4]...");
             }
         }
-
         return players;
     }
 
@@ -203,7 +200,6 @@ public class Game {
 
     private List<List<Map<Card, Card.CardValue>>> buildHand() {
         List<List<Map<Card, Card.CardValue>>> hands = new ArrayList<>();
-
         List<Map<Card, Card.CardValue>> playerHand1 = new ArrayList<>();
         List<Map<Card, Card.CardValue>> playerHand2 = new ArrayList<>();
         List<Map<Card, Card.CardValue>> playerHand3 = new ArrayList<>();
@@ -286,7 +282,6 @@ public class Game {
             player.showHand(player);
             System.out.println();
             if (pile.validPlayableCards(player.getPlayerHand())) {
-
                 while (!selectValidCard) {
                     System.out.printf("%s Please Select A Card Between [1-%s]...", player.getPlayerName(), player.getPlayerHand().size());
                     String input = scanner.nextLine().trim().toUpperCase();

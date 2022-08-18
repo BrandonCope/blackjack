@@ -23,7 +23,6 @@ public enum Card {
 
         CardValue(String cardValue) {
             this.cardValue = cardValue;
-
         }
 
         public String cardValue() {
@@ -34,11 +33,11 @@ public enum Card {
             return cardValue();
         }
     }
+
     private final String card;
 
     Card(String cardValue) {
         this.card = cardValue;
-
     }
 
     public String card() {
