@@ -67,9 +67,28 @@ public class PlayPile extends Deck {
     }
 
     // resets playPile
-    public void reset() {
-        buildDeck();
-        this.setPileList(new ArrayList<>());
-        createPile();
+    public void resetDeck() {
+        int cardCount = 0;
+        List<Map<Card, Card.CardValue>> resetPile = getPile();
+        for (int i = 0; i < resetPile.size() - 1; i++) {
+            Map<Card, Card.CardValue> card = resetPile.get(i);
+            cardCount += 1;
+            this.getDeckMap().put(cardCount, card);
+        }
     }
 }
+
+// while (!validInput) {
+//         System.out.println("How many players? [2-4]");
+//         String input = scanner.nextLine().trim().toUpperCase();
+//         if (input.matches("\\d")) {
+    //         players = Integer.parseInt(input);
+    //         if (players >= 2 && players <= 4) {
+        //         validInput = true;
+        //         } else {
+        //         System.out.println("Please input a number [2-4]...");
+        //         }
+    //     } else {
+    //         System.out.println("Please input a number [2-4]...");
+    //     }
+//     }
