@@ -1,4 +1,4 @@
-package com.games.crazyUno;
+package com.games.crazyUno.domain;
 
 import java.util.*;
 

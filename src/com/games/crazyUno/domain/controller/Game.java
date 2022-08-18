@@ -1,8 +1,8 @@
-package com.games.crazyUno.controller;
+package com.games.crazyUno.domain.controller;
 
-import com.games.crazyUno.Card;
-import com.games.crazyUno.PlayPile;
-import com.games.crazyUno.Player;
+import com.games.crazyUno.domain.Card;
+import com.games.crazyUno.domain.PlayPile;
+import com.games.crazyUno.domain.Player;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,7 +36,9 @@ public class Game {
         System.out.println();
         System.out.println("\033[92m" + Files.readString(Path.of("resources/welcome.txt")) + "\033[0m");
         System.out.println();
-
+        System.out.println("Crazy UNO is a multi-player card game in which the objective is to be the first player to " +
+                "get rid of all their cards.\nPlaying cards matching either by color or number with the play pile. If no matches, players must draw cards.");
+        System.out.println();
     }
 
 

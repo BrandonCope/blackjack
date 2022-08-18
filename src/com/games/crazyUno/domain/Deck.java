@@ -1,8 +1,8 @@
-package com.games.crazyUno;
+package com.games.crazyUno.domain;
 
 import java.util.*;
 
-class Deck {
+public class Deck {
     // Fields
     private Map<Integer, Map<Card, Card.CardValue>> deckMap = new TreeMap<>();
 
