@@ -6,4 +6,4 @@ rem   java -classpath blackjack-1.0.jar com.games.blackjack.client.Main
 
 rem   Note that your application JAR stays on the classpath, regardless of whether you're using additional libraries or not.
 
-java -classpath crazyUno-1.0.jar com.games.crazyUno.client.Main
+java -classpath crazyUno-1.0.jar; com.games.crazyUno.client.Main
