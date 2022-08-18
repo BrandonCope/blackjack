@@ -20,7 +20,7 @@ public class PlayPile extends Deck {
         this.getPile().add(newCard);
     }
 
-    public List<Map<Card, Card.CardValue>> getPile() {
+    private List<Map<Card, Card.CardValue>> getPile() {
         return this.pileList;
     }
 
@@ -61,12 +61,6 @@ public class PlayPile extends Deck {
         pileList.add(card);
     }
 
-
-    public void setPileList(List<Map<Card, Card.CardValue>> pileList) {
-        this.pileList = pileList;
-    }
-
-    // resets playPile and deck
     public void resetDeck() {
         int cardCount = 0;
         List<Map<Card, Card.CardValue>> resetPile = getPile();
