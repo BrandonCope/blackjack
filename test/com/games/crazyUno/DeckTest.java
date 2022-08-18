@@ -1,5 +1,7 @@
 package com.games.crazyUno;
 
+import com.games.crazyUno.domain.Card;
+import com.games.crazyUno.domain.Deck;
 import org.junit.Before;
 import org.junit.Test;
 

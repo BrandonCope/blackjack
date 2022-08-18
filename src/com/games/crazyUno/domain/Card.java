@@ -1,4 +1,4 @@
-package com.games.crazyUno;
+package com.games.crazyUno.domain;
 
 public enum Card {
     RED("31"),
